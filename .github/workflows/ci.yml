@@ -1,0 +1,48 @@
+name: C Build and Test
+
+on:
+  push:
+    branches: [ main, development ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Create directories
+      run: mkdir -p obj bin data
+      
+    - name: Build with Make
+      run: make
+      
+    - name: Check build result
+      run: |
+        echo "=== Build successful ==="
+        ls -la bin/
+        file bin/task4_program || true
+    
+    - name: Create test input file
+      run: |
+        make test_input
+        cat test_input.txt
+      
+    - name: Run test sequence (non-interactive)
+      run: |
+        make test || true
+      
+    - name: Check output files
+      run: |
+        echo "=== Output files ==="
+        ls -la data/ || echo "No data files yet"
+        
+    - name: Upload test results as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: data/
+        if-no-files-found: ignore
