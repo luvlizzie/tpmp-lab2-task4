@@ -148,7 +148,8 @@ void print_all_students(const Student *students, int count) {
 
 /*
  * Function: create_initial_file
- * Creates a file with sample student data
+ * -----------------------------
+ * Creates a file with sample student data (correctly formatted)
  */
 void create_initial_file(const char *filename) {
     FILE *file = fopen(filename, "w");
@@ -159,23 +160,33 @@ void create_initial_file(const char *filename) {
     
     fprintf(file, "5\n");  // Number of students
     
-    // Student 1 - low performer
-    fprintf(file, "Ivanov\nIvan\nIvanovich\nM\nRussian\n180.5\n75.2\n2000 5 15\n+375291234567\n220001 Belarus Minsk Minsk Minsk Lenina 10 5\nBSU\n3\n11\n6.2\nComputer Science\n");
+    // Student 1 - Ivanov Ivan Ivanovich (low performer: 6.2)
+    fprintf(file, "Ivanov\nIvan\nIvanovich\nM\nRussian\n180.5\n75.2\n2000 5 15\n+375291234567\n");
+    fprintf(file, "220001\nBelarus\nMinsk\nMinsk\nMinsk\nLenina\n10\n5\n");
+    fprintf(file, "BSU\n3\n11\n6.2\nComputer Science\n");
     
-    // Student 2 - good student
-    fprintf(file, "Petrov\nPetr\nPetrovich\nM\nBelarusian\n175.0\n70.0\n2001 3 20\n+375292345678\n220002 Belarus Minsk Minsk Minsk Pushkina 15 7\nBSU\n2\n12\n8.5\nMathematics\n");
+    // Student 2 - Petrov Petr Petrovich (good student: 8.5)
+    fprintf(file, "Petrov\nPetr\nPetrovich\nM\nBelarusian\n175.0\n70.0\n2001 3 20\n+375292345678\n");
+    fprintf(file, "220002\nBelarus\nMinsk\nMinsk\nMinsk\nPushkina\n15\n7\n");
+    fprintf(file, "BSU\n2\n12\n8.5\nMathematics\n");
     
-    // Student 3 - low performer
-    fprintf(file, "Sidorova\nAnna\nSergeevna\nF\nRussian\n165.3\n55.0\n2000 11 3\n+375293456789\n220003 Belarus Minsk Minsk Minsk Gagarina 20 3\nBSU\n3\n11\n6.8\nComputer Science\n");
+    // Student 3 - Sidorova Anna Sergeevna (low performer: 6.8)
+    fprintf(file, "Sidorova\nAnna\nSergeevna\nF\nRussian\n165.3\n55.0\n2000 11 3\n+375293456789\n");
+    fprintf(file, "220003\nBelarus\nMinsk\nMinsk\nMinsk\nGagarina\n20\n3\n");
+    fprintf(file, "BSU\n3\n11\n6.8\nComputer Science\n");
     
-    // Student 4 - good student
-    fprintf(file, "Kozlova\nElena\nDmitrievna\nF\nBelarusian\n170.2\n60.0\n2002 7 8\n+375294567890\n220004 Belarus Minsk Minsk Minsk Kolas 25 9\nBSU\n1\n13\n9.2\nPhysics\n");
+    // Student 4 - Kozlova Elena Dmitrievna (good student: 9.2)
+    fprintf(file, "Kozlova\nElena\nDmitrievna\nF\nBelarusian\n170.2\n60.0\n2002 7 8\n+375294567890\n");
+    fprintf(file, "220004\nBelarus\nMinsk\nMinsk\nMinsk\nKolas\n25\n9\n");
+    fprintf(file, "BSU\n1\n13\n9.2\nPhysics\n");
     
-    // Student 5 - low performer
-    fprintf(file, "Novikov\nAlexey\nSergeevich\nM\nRussian\n182.0\n80.0\n2001 12 1\n+375295678901\n220005 Belarus Minsk Minsk Minsk Kupaly 30 2\nBSU\n2\n12\n5.9\nMathematics\n");
+    // Student 5 - Novikov Alexey Sergeevich (low performer: 5.9)
+    fprintf(file, "Novikov\nAlexey\nSergeevich\nM\nRussian\n182.0\n80.0\n2001 12 1\n+375295678901\n");
+    fprintf(file, "220005\nBelarus\nMinsk\nMinsk\nMinsk\nKupaly\n30\n2\n");
+    fprintf(file, "BSU\n2\n12\n5.9\nMathematics\n");
     
     fclose(file);
-    printf("Initial file %s created successfully.\n", filename);
+    printf("Initial file %s created successfully with 5 students.\n", filename);
 }
 
 /*
